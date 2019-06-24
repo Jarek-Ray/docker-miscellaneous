@@ -1,4 +1,4 @@
-FROM hb.zjs.com.cn/zjsbaseimage/java:8-jdk-alpine-Asla-Shanghai-1
+FROM java:8-jdk-alpine-Asla-Shanghai
 LABEL author=zygfengyuwuzu@sina.com describe=打包基础镜像层，包括时区的改变时区为东八区，skywalking6.0agent包
 COPY agent/ /usr/local/skyagent/
 
