@@ -17,3 +17,7 @@ COPY agent/ /usr/local/skyagent/
 运行
 
 docker run -p 11005:11005 -e agent_servicename=mytest -e 'JAVA_OPTS=-Xmx256m -Xms256m' youimage:version
+
+另外一个参数
+
+docker run -p 11005:11005 -e 'JAVA_OPTS=-server -Xmx256m -Xms256m' -e 'AGENT_SERVICE_NAME=mytestaaa' -e AGENT_COLLECTOR_ADDRESS=ip:11800  mytest:1.0.0
