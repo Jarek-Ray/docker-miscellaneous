@@ -1,6 +1,9 @@
-FROM hb.zjs.com.cn/zjsbaseimage/java:8-jdk-alpine-asla-shanghai-1-skyagent-2
+FROM base/java:8
 VOLUME /tmp
-ADD springcloud-zjs-example-mongodb-0.0.1.jar app.jar
-RUN bash -c 'touch /app.jar'
+ADD yourjar.jar app.jar
+
 EXPOSE 11005
-ENTRYPOINT ["java","-javaagent:/usr/local/skyagent/skywalking-agent.jar=agent.service_name=mongodbdockertest","-jar","/app.jar"]
+
+ENV JAVA_OPTS="-server -Xmx1g -Xms1g" agent_servicename="default"
+
+ENTRYPOINT java -javaagent:/usr/local/skyagent/skywalking-agent.jar=agent.service_name=${agent_servicename} ${JAVA_OPTS} -jar /app.jar
