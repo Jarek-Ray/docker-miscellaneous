@@ -4,6 +4,6 @@ ADD yourjar.jar app.jar
 
 EXPOSE 11005
 
-ENV JAVA_OPTS="-server -Xmx1g -Xms1g" AGENT_SERVICE_NAME="default" AGENT_COLLECTOR_ADDRESS="ip:11800"
+ENV JAVA_OPTS="" AGENT_SERVICE_NAME="default" AGENT_COLLECTOR_ADDRESS="ip:11800"
 
 ENTRYPOINT java -javaagent:/usr/local/skyagent/skywalking-agent.jar=agent.service_name=${AGENT_SERVICE_NAME},collector.backend_service=${AGENT_COLLECTOR_ADDRESS} ${JAVA_OPTS} -jar /app.jar
